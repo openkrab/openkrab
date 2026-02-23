@@ -15,7 +15,7 @@ Looking for chat channel docs (Telegram/Discord/Slack/WhatsApp/etc.)? See [Chann
 
 ## Quick start
 
-1. Authenticate with the provider via `krabbot config`.
+1. Authenticate with the provider via `krabkrab config`.
 2. Set the default model:
 
 ```toml

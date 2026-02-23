@@ -39,7 +39,7 @@ mode = "serve"
 Then start the gateway:
 
 ```bash
-krabbot gateway
+krabkrab gateway
 ```
 
 Open:
@@ -80,7 +80,7 @@ password = "your-secure-password"
 Open the dashboard:
 
 ```bash
-krabbot dashboard
+krabkrab dashboard
 ```
 
 Or manually visit `http://127.0.0.1:18789/`

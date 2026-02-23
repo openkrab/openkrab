@@ -40,7 +40,7 @@ cd openkrab
 cargo build --release
 
 # Or download pre-built binary
-# Binary at: target/release/krabbot
+# Binary at: target/release/krabkrab
 ```
 
 ### 2. Configuration Format
@@ -62,7 +62,7 @@ cargo build --release
 }
 ```
 
-**OpenKrab:** TOML (`~/.config/krabbot/config.toml`)
+**OpenKrab:** TOML (`~/.config/krabkrab/config.toml`)
 ```toml
 [agents.defaults]
 provider = "anthropic"
@@ -77,34 +77,34 @@ bot_token = "123:abc"
 
 | OpenClaw | OpenKrab | Notes |
 |----------|----------|-------|
-| `openclaw` | `krabbot` | New binary name |
-| `openclaw onboard` | `krabbot setup` | Setup wizard |
-| `openclaw config get <path>` | `krabbot config get <key>` | Dot notation |
-| `openclaw gateway --port 18789` | `krabbot gateway --port 18789` | Similar |
-| `openclaw channels login` | `krabbot channels add` | Different flow |
-| `openclaw doctor` | `krabbot doctor` | Same |
-| `openclaw status` | `krabbot status` | Same |
-| `openclaw message send` | `krabbot message send` | Similar |
-| `openclaw memory index` | `krabbot memory sync` | Different name |
+| `openclaw` | `krabkrab` | New binary name |
+| `openclaw onboard` | `krabkrab setup` | Setup wizard |
+| `openclaw config get <path>` | `krabkrab config get <key>` | Dot notation |
+| `openclaw gateway --port 18789` | `krabkrab gateway --port 18789` | Similar |
+| `openclaw channels login` | `krabkrab channels add` | Different flow |
+| `openclaw doctor` | `krabkrab doctor` | Same |
+| `openclaw status` | `krabkrab status` | Same |
+| `openclaw message send` | `krabkrab message send` | Similar |
+| `openclaw memory index` | `krabkrab memory sync` | Different name |
 
 ### 4. Directory Structure
 
 | OpenClaw | OpenKrab |
 |----------|----------|
-| `~/.clawdbot/` | `~/.config/krabbot/` |
-| `~/.clawdbot/openclaw.json` | `~/.config/krabbot/config.toml` |
-| `~/.clawdbot/workspace/` | `~/.local/share/krabbot/workspace/` |
-| `~/.clawdbot/sessions/` | `~/.local/share/krabbot/sessions/` |
-| `~/.clawdbot/credentials/` | `~/.local/share/krabbot/credentials/` |
+| `~/.clawdbot/` | `~/.config/krabkrab/` |
+| `~/.clawdbot/openclaw.json` | `~/.config/krabkrab/config.toml` |
+| `~/.clawdbot/workspace/` | `~/.local/share/krabkrab/workspace/` |
+| `~/.clawdbot/sessions/` | `~/.local/share/krabkrab/sessions/` |
+| `~/.clawdbot/credentials/` | `~/.local/share/krabkrab/credentials/` |
 
 ### 5. Environment Variables
 
 | OpenClaw | OpenKrab |
 |----------|----------|
-| `OPENCLAW_HOME` | `KRABBOT_CONFIG_DIR` |
-| `OPENCLAW_STATE_DIR` | `KRABBOT_DATA_DIR` |
-| `OPENCLAW_CONFIG_PATH` | `KRABBOT_CONFIG_FILE` |
-| `CLAWDBOT_PROFILE` | `KRABBOT_PROFILE` |
+| `OPENCLAW_HOME` | `KRABKRAB_CONFIG_DIR` |
+| `OPENCLAW_STATE_DIR` | `KRABKRAB_DATA_DIR` |
+| `OPENCLAW_CONFIG_PATH` | `KRABKRAB_CONFIG_FILE` |
+| `CLAWDBOT_PROFILE` | `KRABKRAB_PROFILE` |
 
 ### 6. Model Provider Configuration
 
@@ -145,7 +145,7 @@ cp ~/.clawdbot/openclaw.json ~/openclaw-backup.json
 git clone https://github.com/openkrab/openkrab.git
 cd openkrab
 cargo build --release
-sudo cp target/release/krabbot /usr/local/bin/
+sudo cp target/release/krabkrab /usr/local/bin/
 ```
 
 ### Step 3: Migrate Configuration
@@ -153,7 +153,7 @@ sudo cp target/release/krabbot /usr/local/bin/
 OpenKrab includes a migration helper:
 
 ```bash
-krabbot migrate --from-openclaw ~/openclaw-backup.json
+krabkrab migrate --from-openclaw ~/openclaw-backup.json
 ```
 
 This will:
@@ -165,15 +165,15 @@ This will:
 ### Step 4: Verify Migration
 
 ```bash
-krabbot doctor          # Check configuration
-krabbot config show     # View migrated config
-krabbot status          # Check gateway status
+krabkrab doctor          # Check configuration
+krabkrab config show     # View migrated config
+krabkrab status          # Check gateway status
 ```
 
 ### Step 5: Start Gateway
 
 ```bash
-krabbot gateway --port 18789
+krabkrab gateway --port 18789
 ```
 
 ## Feature Comparison
@@ -239,11 +239,11 @@ OpenKrab supports config hot reload like OpenClaw, but uses TOML instead of JSON
 
 ### 4. No Built-in Update
 
-OpenKrab doesn't have `krabbot update` command yet. Update by:
+OpenKrab doesn't have `krabkrab update` command yet. Update by:
 ```bash
 git pull
 cargo build --release
-sudo cp target/release/krabbot /usr/local/bin/
+sudo cp target/release/krabkrab /usr/local/bin/
 ```
 
 ## Troubleshooting Migration
@@ -251,18 +251,18 @@ sudo cp target/release/krabbot /usr/local/bin/
 ### "Config validation failed"
 
 ```bash
-krabbot doctor --fix
+krabkrab doctor --fix
 ```
 
 ### "Channel not connecting"
 
 - Verify API tokens are correctly migrated
-- Check `krabbot channels status`
-- Re-add channel if needed: `krabbot channels add`
+- Check `krabkrab channels status`
+- Re-add channel if needed: `krabkrab channels add`
 
 ### "Memory not found"
 
-- Re-index memory: `krabbot memory sync --path ~/old-workspace/memory/`
+- Re-index memory: `krabkrab memory sync --path ~/old-workspace/memory/`
 
 ### "Plugins not loading"
 
