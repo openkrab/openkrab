@@ -15,7 +15,7 @@ x-i18n:
 
 # Doctor
 
-`openclaw doctor` 是 OpenClaw 的修复 + 迁移工具。它修复过时的配置/状态，检查健康状况，并提供可操作的修复步骤。
+`openclaw doctor` 是 OpenKrab 的修复 + 迁移工具。它修复过时的配置/状态，检查健康状况，并提供可操作的修复步骤。
 
 ## 快速开始
 
@@ -180,8 +180,8 @@ Doctor 还会报告由于以下原因暂时不可用的认证配置文件：
 
 ### 8）Gateway 网关服务迁移和清理提示
 
-Doctor 检测遗留的 Gateway 网关服务（launchd/systemd/schtasks），并提供删除它们并使用当前 Gateway 网关端口安装 OpenClaw 服务的选项。它还可以扫描额外的类 Gateway 网关服务并打印清理提示。
-配置文件命名的 OpenClaw Gateway 网关服务被视为一等公民，不会被标记为"额外的"。
+Doctor 检测遗留的 Gateway 网关服务（launchd/systemd/schtasks），并提供删除它们并使用当前 Gateway 网关端口安装 OpenKrab 服务的选项。它还可以扫描额外的类 Gateway 网关服务并打印清理提示。
+配置文件命名的 OpenKrab Gateway 网关服务被视为一等公民，不会被标记为"额外的"。
 
 ### 9）安全警告
 

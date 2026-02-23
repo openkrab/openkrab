@@ -1,14 +1,14 @@
 ---
-summary: "Run OpenClaw with Llama.cpp (OpenAI-compatible local LLM)"
+summary: "Run OpenKrab with Llama.cpp (OpenAI-compatible local LLM)"
 read_when:
-  - You want to run OpenClaw with local models via llama.cpp
+  - You want to run OpenKrab with local models via llama.cpp
   - You need llama.cpp setup and configuration guidance
 title: "Llama.cpp"
 ---
 
 # Llama.cpp
 
-OpenClaw integrates with `llama.cpp` using its OpenAI-compatible API endpoint `/v1`. This allows you to run quantized local models efficiently on CPU or GPU and connect them seamlessly to OpenClaw.
+OpenKrab integrates with `llama.cpp` using its OpenAI-compatible API endpoint `/v1`. This allows you to run quantized local models efficiently on CPU or GPU and connect them seamlessly to OpenKrab.
 
 ## Quick start
 
@@ -19,7 +19,7 @@ OpenClaw integrates with `llama.cpp` using its OpenAI-compatible API endpoint `/
 ./llama-server -m your-model.gguf --port 8080 --ctx-size 8192
 ```
 
-1. Enable Llama.cpp for OpenClaw via environment variables:
+1. Enable Llama.cpp for OpenKrab via environment variables:
 
 ```bash
 export LLAMA_CPP_HOST="http://localhost:8080/v1"

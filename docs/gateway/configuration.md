@@ -9,7 +9,7 @@ title: "Configuration"
 
 # Configuration
 
-OpenKrab reads an optional **TOML** config from `~/.config/krabkrab/config.toml`.
+OpenKrab reads an optional **TOML** config from `~/.config/krabbot/config.toml`.
 
 If the file is missing, OpenKrab uses safe defaults. Common reasons to add a config:
 
@@ -26,7 +26,7 @@ See the [full reference](/gateway/configuration-reference) for every available f
 ## Minimal config
 
 ```toml
-# ~/.config/krabkrab/config.toml
+# ~/.config/krabbot/config.toml
 [channels.telegram]
 enabled = true
 bot_token = "123:abc"
@@ -42,13 +42,13 @@ model = "gpt-4o"
 <Tabs>
   <Tab title="CLI (one-liners)">
     ```bash
-    krabkrab config get providers.openai.api_key
-    krabkrab config set providers.openai.model "gpt-4o"
-    krabkrab config unset providers.openai.api_key
+    krabbot config get providers.openai.api_key
+    krabbot config set providers.openai.model "gpt-4o"
+    krabbot config unset providers.openai.api_key
     ```
   </Tab>
   <Tab title="Direct edit">
-    Edit `~/.config/krabkrab/config.toml` directly. The Gateway watches the file and applies changes automatically (see [hot reload](#config-hot-reload)).
+    Edit `~/.config/krabbot/config.toml` directly. The Gateway watches the file and applies changes automatically (see [hot reload](#config-hot-reload)).
   </Tab>
 </Tabs>
 
@@ -61,8 +61,8 @@ OpenKrab only accepts configurations that fully match the schema. Unknown keys, 
 When validation fails:
 
 - The Gateway does not boot
-- Only diagnostic commands work (`krabkrab doctor`, `krabkrab status`)
-- Run `krabkrab doctor` to see exact issues
+- Only diagnostic commands work (`krabbot doctor`, `krabbot status`)
+- Run `krabbot doctor` to see exact issues
 
 ## Common tasks
 
@@ -128,7 +128,7 @@ The Gateway watches `config.toml` and reloads most settings without a restart. C
 Override config values with environment variables:
 
 ```bash
-KRABKRAB_PROVIDERS__OPENAI__API_KEY="sk-..." krabkrab gateway
+KRABBOT_PROVIDERS__OPENAI__API_KEY="sk-..." krabbot gateway
 ```
 
 See [Environment vars](/help/environment) for full details.

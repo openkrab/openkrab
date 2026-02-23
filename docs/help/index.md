@@ -25,22 +25,22 @@ If you're looking for conceptual questions (not "something broke"):
 ### Gateway won't start
 
 ```bash
-krabkrab doctor          # Check configuration
-krabkrab status          # Check gateway status
-krabkrab logs --follow   # View logs
+krabbot doctor          # Check configuration
+krabbot status          # Check gateway status
+krabbot logs --follow   # View logs
 ```
 
 ### Can't connect to channel
 
-1. Check channel configuration: `krabkrab channels status`
+1. Check channel configuration: `krabbot channels status`
 2. Verify API tokens are set correctly
 3. Check gateway logs for errors
 
 ### AI not responding
 
-1. Verify provider API key: `krabkrab config get providers.openai.api_key`
-2. Check model status: `krabkrab models status`
-3. Test with simple query: `krabkrab ask "hello"`
+1. Verify provider API key: `krabbot config get providers.openai.api_key`
+2. Check model status: `krabbot models status`
+3. Test with simple query: `krabbot ask "hello"`
 
 ## Getting Help
 

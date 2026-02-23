@@ -22,7 +22,7 @@ openclaw security audit --json
 
 It flags common footguns (Gateway auth exposure, browser control exposure, elevated allowlists, filesystem permissions).
 
-OpenClaw is both a product and an experiment: you’re wiring frontier-model behavior into real messaging surfaces and real tools. **There is no “perfectly secure” setup.** The goal is to be deliberate about:
+OpenKrab is both a product and an experiment: you’re wiring frontier-model behavior into real messaging surfaces and real tools. **There is no “perfectly secure” setup.** The goal is to be deliberate about:
 
 - who can talk to your bot
 - where the bot is allowed to act
@@ -79,7 +79,7 @@ If more than one person can DM your bot:
 - **Runtime expectation drift** (for example `tools.exec.host="sandbox"` while sandbox mode is off, which runs directly on the gateway host).
 - **Model hygiene** (warn when configured models look legacy; not a hard block).
 
-If you run `--deep`, OpenClaw also attempts a best-effort live Gateway probe.
+If you run `--deep`, OpenKrab also attempts a best-effort live Gateway probe.
 
 ## Credential storage map
 
@@ -110,7 +110,7 @@ High-signal `checkId` values you will most likely see in real deployments (not e
 
 | `checkId`                                     | Severity      | Why it matters                                                          | Primary fix key/path                                          | Auto-fix |
 | --------------------------------------------- | ------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------- | -------- |
-| `fs.state_dir.perms_world_writable`           | critical      | Other users/processes can modify full OpenClaw state                    | filesystem perms on `~/.openclaw`                             | yes      |
+| `fs.state_dir.perms_world_writable`           | critical      | Other users/processes can modify full OpenKrab state                    | filesystem perms on `~/.openclaw`                             | yes      |
 | `fs.config.perms_writable`                    | critical      | Others can change auth/tool policy/config                               | filesystem perms on `~/.openclaw/openclaw.json`               | yes      |
 | `fs.config.perms_world_readable`              | critical      | Config can expose tokens/settings                                       | filesystem perms on config file                               | yes      |
 | `gateway.bind_no_auth`                        | critical      | Remote bind without shared secret                                       | `gateway.bind`, `gateway.auth.*`                              | no       |
@@ -163,7 +163,7 @@ When `trustedProxies` is configured, the Gateway will use `X-Forwarded-For` head
 
 ## Local session logs live on disk
 
-OpenClaw stores session transcripts on disk under `~/.openclaw/agents/<agentId>/sessions/*.jsonl`.
+OpenKrab stores session transcripts on disk under `~/.openclaw/agents/<agentId>/sessions/*.jsonl`.
 This is required for session continuity and (optionally) session memory indexing, but it also means
 **any process/user with filesystem access can read those logs**. Treat disk access as the trust
 boundary and lock down permissions on `~/.openclaw` (see the audit section below). If you need
@@ -179,7 +179,7 @@ If a macOS node is paired, the Gateway can invoke `system.run` on that node. Thi
 
 ## Dynamic skills (watcher / remote nodes)
 
-OpenClaw can refresh the skills list mid-session:
+OpenKrab can refresh the skills list mid-session:
 
 - **Skills watcher**: changes to `SKILL.md` can update the skills snapshot on the next agent turn.
 - **Remote nodes**: connecting a macOS node can make macOS-only skills eligible (based on bin probing).
@@ -205,7 +205,7 @@ People who message you can:
 
 Most failures here are not fancy exploits — they’re “someone messaged the bot and the bot did what they asked.”
 
-OpenClaw’s stance:
+OpenKrab’s stance:
 
 - **Identity first:** decide who can talk to the bot (DM pairing / allowlists / explicit “open”).
 - **Scope next:** decide where the bot is allowed to act (group allowlists + mention gating, tools, sandboxing, device permissions).
@@ -250,7 +250,7 @@ Plugins run **in-process** with the Gateway. Treat them as trusted code:
 - Restart the Gateway after plugin changes.
 - If you install plugins from npm (`openclaw plugins install <npm-spec>`), treat it like running untrusted code:
   - The install path is `~/.openclaw/extensions/<pluginId>/` (or `$OPENCLAW_STATE_DIR/extensions/<pluginId>/`).
-  - OpenClaw uses `npm pack` and then runs `npm install --omit=dev` in that directory (npm lifecycle scripts can execute code during install).
+  - OpenKrab uses `npm pack` and then runs `npm install --omit=dev` in that directory (npm lifecycle scripts can execute code during install).
   - Prefer pinned, exact versions (`@scope/pkg@1.2.3`), and inspect the unpacked code on disk before enabling.
 
 Details: [Plugins](/tools/plugin)
@@ -275,7 +275,7 @@ Details + files on disk: [Pairing](/channels/pairing)
 
 ## DM session isolation (multi-user mode)
 
-By default, OpenClaw routes **all DMs into the main session** so your assistant has continuity across devices and channels. If **multiple people** can DM the bot (open DMs or a multi-person allowlist), consider isolating DM sessions:
+By default, OpenKrab routes **all DMs into the main session** so your assistant has continuity across devices and channels. If **multiple people** can DM the bot (open DMs or a multi-person allowlist), consider isolating DM sessions:
 
 ```json5
 {
@@ -296,7 +296,7 @@ If you run multiple accounts on the same channel, use `per-account-channel-peer`
 
 ## Allowlists (DM + groups) — terminology
 
-OpenClaw has two separate “who can trigger me?” layers:
+OpenKrab has two separate “who can trigger me?” layers:
 
 - **DM allowlist** (`allowFrom` / `channels.discord.allowFrom` / `channels.slack.allowFrom`; legacy: `channels.discord.dm.allowFrom`, `channels.slack.dm.allowFrom`): who is allowed to talk to the bot in direct messages.
   - When `dmPolicy="pairing"`, approvals are written to `~/.openclaw/credentials/<channel>-allowFrom.json` (merged with config allowlists).
@@ -334,7 +334,7 @@ Red flags to treat as untrusted:
 
 ## Unsafe external content bypass flags
 
-OpenClaw includes explicit bypass flags that disable external-content safety wrapping:
+OpenKrab includes explicit bypass flags that disable external-content safety wrapping:
 
 - `hooks.mappings[].allowUnsafeExternalContent`
 - `hooks.gmail.allowUnsafeExternalContent`
@@ -520,9 +520,9 @@ Rotation checklist (token/password):
 
 ### 0.6) Tailscale Serve identity headers
 
-When `gateway.auth.allowTailscale` is `true` (default for Serve), OpenClaw
+When `gateway.auth.allowTailscale` is `true` (default for Serve), OpenKrab
 accepts Tailscale Serve identity headers (`tailscale-user-login`) as
-authentication. OpenClaw verifies the identity by resolving the
+authentication. OpenKrab verifies the identity by resolving the
 `x-forwarded-for` address through the local Tailscale daemon (`tailscale whois`)
 and matching it to the header. This only triggers for requests that hit loopback
 and include `x-forwarded-for`, `x-forwarded-proto`, and `x-forwarded-host` as
@@ -535,7 +535,7 @@ you terminate TLS or proxy in front of the gateway, disable
 Trusted proxies:
 
 - If you terminate TLS in front of the Gateway, set `gateway.trustedProxies` to your proxy IPs.
-- OpenClaw will trust `x-forwarded-for` (or `x-real-ip`) from those IPs to determine the client IP for local pairing checks and HTTP auth/local checks.
+- OpenKrab will trust `x-forwarded-for` (or `x-real-ip`) from those IPs to determine the client IP for local pairing checks and HTTP auth/local checks.
 - Ensure your proxy **overwrites** `x-forwarded-for` and blocks direct access to the Gateway port.
 
 See [Tailscale](/gateway/tailscale) and [Web overview](/web).
@@ -701,7 +701,7 @@ access those accounts and data. Treat browser profiles as **sensitive state**:
 - Disable browser sync/password managers in the agent profile if possible (reduces blast radius).
 - For remote gateways, assume “browser control” is equivalent to “operator access” to whatever that profile can reach.
 - Keep the Gateway and node hosts tailnet-only; avoid exposing relay/control ports to LAN or public Internet.
-- The Chrome extension relay’s CDP endpoint is auth-gated; only OpenClaw clients can connect.
+- The Chrome extension relay’s CDP endpoint is auth-gated; only OpenKrab clients can connect.
 - Disable browser proxy routing when you don’t need it (`gateway.nodes.browser.mode="off"`).
 - Chrome extension relay mode is **not** “safer”; it can take over your existing Chrome tabs. Assume it can act as you in whatever that tab/profile can reach.
 
@@ -772,7 +772,7 @@ Common use cases:
           scope: "agent",
           workspaceAccess: "none",
         },
-        // Session tools can reveal sensitive data from transcripts. By default OpenClaw limits these tools
+        // Session tools can reveal sensitive data from transcripts. By default OpenKrab limits these tools
         // to the current session + spawned subagent sessions, but you can clamp further if needed.
         // See `tools.sessions.visibility` in the configuration reference.
         tools: {
@@ -847,7 +847,7 @@ If your AI does something bad:
 
 ### Collect for a report
 
-- Timestamp, gateway host OS + OpenClaw version
+- Timestamp, gateway host OS + OpenKrab version
 - The session transcript(s) + a short log tail (after redacting)
 - What the attacker sent + what the agent did
 - Whether the Gateway was exposed beyond loopback (LAN/Tailscale Funnel/Serve)
@@ -884,7 +884,7 @@ Commit the updated `.secrets.baseline` once it reflects the intended state.
 
 ## Reporting Security Issues
 
-Found a vulnerability in OpenClaw? Please report responsibly:
+Found a vulnerability in OpenKrab? Please report responsibly:
 
 1. Email: [security@openclaw.ai](mailto:security@openclaw.ai)
 2. Don't post publicly until fixed

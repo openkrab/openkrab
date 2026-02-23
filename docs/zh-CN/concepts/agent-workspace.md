@@ -57,7 +57,7 @@ x-i18n:
 
 ## 工作区文件映射（每个文件的含义）
 
-这些是 OpenClaw 在工作区内期望的标准文件：
+这些是 OpenKrab 在工作区内期望的标准文件：
 
 - `AGENTS.md`
   - 智能体的操作指南以及它应该如何使用记忆。
@@ -110,7 +110,7 @@ x-i18n:
 - `canvas/`（可选）
   - 用于节点显示的 Canvas UI 文件（例如 `canvas/index.html`）。
 
-如果任何引导文件缺失，OpenClaw 会在会话中注入"缺失文件"标记并继续。大型引导文件在注入时会被截断；使用 `agents.defaults.bootstrapMaxChars` 调整限制（默认：20000）。
+如果任何引导文件缺失，OpenKrab 会在会话中注入"缺失文件"标记并继续。大型引导文件在注入时会被截断；使用 `agents.defaults.bootstrapMaxChars` 调整限制（默认：20000）。
 `openclaw setup` 可以重新创建缺失的默认值而不覆盖现有文件。
 
 ## 工作区中不包含的内容

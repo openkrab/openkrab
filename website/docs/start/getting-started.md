@@ -11,7 +11,7 @@ title: "Getting Started"
 Goal: go from zero to a first working chat with minimal setup.
 
 <Info>
-Fastest chat: open the Web Dashboard (no channel setup needed). Run `krabkrab dashboard`
+Fastest chat: open the Web Dashboard (no channel setup needed). Run `krabbot dashboard`
 and chat in the browser, or open `http://127.0.0.1:18789/` on the
 <Tooltip headline="Gateway host" tip="The machine running the OpenKrab gateway service.">gateway host</Tooltip>.
 Docs: [Dashboard](/web/dashboard).
@@ -38,7 +38,7 @@ Check your Rust version with `rustc --version` if building from source.
         cargo build --release
         ```
         <Note>
-        Binary will be at `target/release/krabkrab`
+        Binary will be at `target/release/krabbot`
         </Note>
       </Tab>
       <Tab title="Pre-built Binary">
@@ -56,7 +56,7 @@ Check your Rust version with `rustc --version` if building from source.
   </Step>
   <Step title="Configure your AI provider">
     ```bash
-    krabkrab config set providers.openai.api_key "sk-..."
+    krabbot config set providers.openai.api_key "sk-..."
     ```
 
     Or use other providers (Anthropic, Gemini, Ollama, etc.)
@@ -64,13 +64,13 @@ Check your Rust version with `rustc --version` if building from source.
   </Step>
   <Step title="Start the Gateway">
     ```bash
-    krabkrab gateway --port 18789
+    krabbot gateway --port 18789
     ```
 
   </Step>
   <Step title="Open the Dashboard">
     ```bash
-    krabkrab dashboard
+    krabbot dashboard
     ```
     Or open `http://127.0.0.1:18789/` in your browser.
   </Step>
@@ -87,15 +87,15 @@ If the Dashboard loads, your Gateway is ready for use.
     Requires a configured channel.
 
     ```bash
-    krabkrab telegram --to @username --text "Hello from OpenKrab!"
-    krabkrab ask "What's the weather today?"
+    krabbot telegram --to @username --text "Hello from OpenKrab!"
+    krabbot ask "What's the weather today?"
     ```
 
   </Accordion>
   <Accordion title="Check system status">
     ```bash
-    krabkrab doctor         # check for config issues
-    krabkrab status         # gateway status
+    krabbot doctor         # check for config issues
+    krabbot status         # gateway status
     ```
   </Accordion>
 </AccordionGroup>
@@ -104,8 +104,8 @@ If the Dashboard loads, your Gateway is ready for use.
 
 If you want custom config/state locations:
 
-- `KRABKRAB_CONFIG_DIR` sets the config directory (default: `~/.config/krabkrab/`)
-- `KRABKRAB_DATA_DIR` sets the data directory
+- `KRABBOT_CONFIG_DIR` sets the config directory (default: `~/.config/krabbot/`)
+- `KRABBOT_DATA_DIR` sets the data directory
 
 Full environment variable reference: [Environment vars](/help/environment).
 

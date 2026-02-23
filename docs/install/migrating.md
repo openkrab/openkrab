@@ -1,18 +1,18 @@
 ---
-summary: "Migration guide from OpenClaw (TypeScript) to OpenKrab (Rust)"
+summary: "Migration guide from OpenKrab (TypeScript) to OpenKrab (Rust)"
 read_when:
-  - You are migrating from OpenClaw to OpenKrab
+  - You are migrating from OpenKrab to OpenKrab
   - You want to understand the differences between TypeScript and Rust versions
-title: "Migration from OpenClaw"
+title: "Migration from OpenKrab"
 ---
 
-# Migration from OpenClaw
+# Migration from OpenKrab
 
-If you're coming from **OpenClaw** (the original TypeScript/Node.js implementation), this guide will help you migrate to **OpenKrab** (the Rust implementation).
+If you're coming from **OpenKrab** (the original TypeScript/Node.js implementation), this guide will help you migrate to **OpenKrab** (the Rust implementation).
 
 ## Why Rust?
 
-| Feature | OpenClaw (TypeScript) | OpenKrab (Rust) |
+| Feature | OpenKrab (TypeScript) | OpenKrab (Rust) |
 |---------|----------------------|-----------------|
 | **Performance** | V8 JIT limitations | Native compiled, ~5x faster |
 | **Memory Safety** | Runtime errors possible | Compile-time guarantees |
@@ -26,7 +26,7 @@ If you're coming from **OpenClaw** (the original TypeScript/Node.js implementati
 
 ### 1. Installation
 
-**OpenClaw (old):**
+**OpenKrab (old):**
 ```bash
 npm install -g openclaw@latest
 openclaw onboard --install-daemon
@@ -40,12 +40,12 @@ cd openkrab
 cargo build --release
 
 # Or download pre-built binary
-# Binary at: target/release/krabkrab
+# Binary at: target/release/krabbot
 ```
 
 ### 2. Configuration Format
 
-**OpenClaw:** JSON5 (`~/.clawdbot/openclaw.json`)
+**OpenKrab:** JSON5 (`~/.krabbot/openclaw.json`)
 ```json5
 {
   agents: {
@@ -62,7 +62,7 @@ cargo build --release
 }
 ```
 
-**OpenKrab:** TOML (`~/.config/krabkrab/config.toml`)
+**OpenKrab:** TOML (`~/.config/krabbot/config.toml`)
 ```toml
 [agents.defaults]
 provider = "anthropic"
@@ -75,40 +75,40 @@ bot_token = "123:abc"
 
 ### 3. CLI Commands
 
-| OpenClaw | OpenKrab | Notes |
+| OpenKrab | OpenKrab | Notes |
 |----------|----------|-------|
-| `openclaw` | `krabkrab` | New binary name |
-| `openclaw onboard` | `krabkrab setup` | Setup wizard |
-| `openclaw config get <path>` | `krabkrab config get <key>` | Dot notation |
-| `openclaw gateway --port 18789` | `krabkrab gateway --port 18789` | Similar |
-| `openclaw channels login` | `krabkrab channels add` | Different flow |
-| `openclaw doctor` | `krabkrab doctor` | Same |
-| `openclaw status` | `krabkrab status` | Same |
-| `openclaw message send` | `krabkrab message send` | Similar |
-| `openclaw memory index` | `krabkrab memory sync` | Different name |
+| `openclaw` | `krabbot` | New binary name |
+| `openclaw onboard` | `krabbot setup` | Setup wizard |
+| `openclaw config get <path>` | `krabbot config get <key>` | Dot notation |
+| `openclaw gateway --port 18789` | `krabbot gateway --port 18789` | Similar |
+| `openclaw channels login` | `krabbot channels add` | Different flow |
+| `openclaw doctor` | `krabbot doctor` | Same |
+| `openclaw status` | `krabbot status` | Same |
+| `openclaw message send` | `krabbot message send` | Similar |
+| `openclaw memory index` | `krabbot memory sync` | Different name |
 
 ### 4. Directory Structure
 
-| OpenClaw | OpenKrab |
+| OpenKrab | OpenKrab |
 |----------|----------|
-| `~/.clawdbot/` | `~/.config/krabkrab/` |
-| `~/.clawdbot/openclaw.json` | `~/.config/krabkrab/config.toml` |
-| `~/.clawdbot/workspace/` | `~/.local/share/krabkrab/workspace/` |
-| `~/.clawdbot/sessions/` | `~/.local/share/krabkrab/sessions/` |
-| `~/.clawdbot/credentials/` | `~/.local/share/krabkrab/credentials/` |
+| `~/.krabbot/` | `~/.config/krabbot/` |
+| `~/.krabbot/openclaw.json` | `~/.config/krabbot/config.toml` |
+| `~/.krabbot/workspace/` | `~/.local/share/krabbot/workspace/` |
+| `~/.krabbot/sessions/` | `~/.local/share/krabbot/sessions/` |
+| `~/.krabbot/credentials/` | `~/.local/share/krabbot/credentials/` |
 
 ### 5. Environment Variables
 
-| OpenClaw | OpenKrab |
+| OpenKrab | OpenKrab |
 |----------|----------|
-| `OPENCLAW_HOME` | `KRABKRAB_CONFIG_DIR` |
-| `OPENCLAW_STATE_DIR` | `KRABKRAB_DATA_DIR` |
-| `OPENCLAW_CONFIG_PATH` | `KRABKRAB_CONFIG_FILE` |
-| `CLAWDBOT_PROFILE` | `KRABKRAB_PROFILE` |
+| `OPENCLAW_HOME` | `KRABBOT_CONFIG_DIR` |
+| `OPENCLAW_STATE_DIR` | `KRABBOT_DATA_DIR` |
+| `OPENCLAW_CONFIG_PATH` | `KRABBOT_CONFIG_FILE` |
+| `CLAWDBOT_PROFILE` | `KRABBOT_PROFILE` |
 
 ### 6. Model Provider Configuration
 
-**OpenClaw:**
+**OpenKrab:**
 ```json5
 {
   agents: {
@@ -132,11 +132,11 @@ model = "claude-3-5-sonnet-20241022"
 
 ## Migration Steps
 
-### Step 1: Export OpenClaw Config
+### Step 1: Export OpenKrab Config
 
 ```bash
-# On your old OpenClaw installation
-cp ~/.clawdbot/openclaw.json ~/openclaw-backup.json
+# On your old OpenKrab installation
+cp ~/.krabbot/openclaw.json ~/openclaw-backup.json
 ```
 
 ### Step 2: Install OpenKrab
@@ -145,7 +145,7 @@ cp ~/.clawdbot/openclaw.json ~/openclaw-backup.json
 git clone https://github.com/openkrab/openkrab.git
 cd openkrab
 cargo build --release
-sudo cp target/release/krabkrab /usr/local/bin/
+sudo cp target/release/krabbot /usr/local/bin/
 ```
 
 ### Step 3: Migrate Configuration
@@ -153,7 +153,7 @@ sudo cp target/release/krabkrab /usr/local/bin/
 OpenKrab includes a migration helper:
 
 ```bash
-krabkrab migrate --from-openclaw ~/openclaw-backup.json
+krabbot migrate --from-openclaw ~/openclaw-backup.json
 ```
 
 This will:
@@ -165,15 +165,15 @@ This will:
 ### Step 4: Verify Migration
 
 ```bash
-krabkrab doctor          # Check configuration
-krabkrab config show     # View migrated config
-krabkrab status          # Check gateway status
+krabbot doctor          # Check configuration
+krabbot config show     # View migrated config
+krabbot status          # Check gateway status
 ```
 
 ### Step 5: Start Gateway
 
 ```bash
-krabkrab gateway --port 18789
+krabbot gateway --port 18789
 ```
 
 ## Feature Comparison
@@ -215,7 +215,7 @@ OpenKrab is a single binary. No package manager needed.
 
 ### 2. Different Plugin Format
 
-**OpenClaw:** TypeScript/JavaScript plugins
+**OpenKrab:** TypeScript/JavaScript plugins
 ```javascript
 // openclaw-plugin.js
 module.exports = {
@@ -235,15 +235,15 @@ pub extern "C" fn init() {
 
 ### 3. Config Hot Reload
 
-OpenKrab supports config hot reload like OpenClaw, but uses TOML instead of JSON5.
+OpenKrab supports config hot reload like OpenKrab, but uses TOML instead of JSON5.
 
 ### 4. No Built-in Update
 
-OpenKrab doesn't have `krabkrab update` command yet. Update by:
+OpenKrab doesn't have `krabbot update` command yet. Update by:
 ```bash
 git pull
 cargo build --release
-sudo cp target/release/krabkrab /usr/local/bin/
+sudo cp target/release/krabbot /usr/local/bin/
 ```
 
 ## Troubleshooting Migration
@@ -251,22 +251,22 @@ sudo cp target/release/krabkrab /usr/local/bin/
 ### "Config validation failed"
 
 ```bash
-krabkrab doctor --fix
+krabbot doctor --fix
 ```
 
 ### "Channel not connecting"
 
 - Verify API tokens are correctly migrated
-- Check `krabkrab channels status`
-- Re-add channel if needed: `krabkrab channels add`
+- Check `krabbot channels status`
+- Re-add channel if needed: `krabbot channels add`
 
 ### "Memory not found"
 
-- Re-index memory: `krabkrab memory sync --path ~/old-workspace/memory/`
+- Re-index memory: `krabbot memory sync --path ~/old-workspace/memory/`
 
 ### "Plugins not loading"
 
-- OpenClaw plugins (JS) won't work with OpenKrab
+- OpenKrab plugins (JS) won't work with OpenKrab
 - Look for Rust/WASM versions of plugins
 - Or port your plugin using the plugin SDK
 
@@ -274,13 +274,13 @@ krabkrab doctor --fix
 
 - GitHub Issues: [github.com/openkrab/openkrab/issues](https://github.com/openkrab/openkrab/issues)
 - Migration questions: Tag your issue with `migration` label
-- Original OpenClaw: [github.com/openclaw/openclaw](https://github.com/openclaw/openclaw)
+- Original OpenKrab: [github.com/openclaw/openclaw](https://github.com/openclaw/openclaw)
 
 ## Porting Status Summary
 
 OpenKrab is a **complete rewrite** in Rust:
 
-| Metric | OpenClaw (TS) | OpenKrab (Rust) |
+| Metric | OpenKrab (TS) | OpenKrab (Rust) |
 |--------|---------------|-----------------|
 | **Total Lines** | ~27,139 | ~56,276 |
 | **Test Coverage** | - | 410+ tests |

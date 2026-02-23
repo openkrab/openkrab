@@ -1,12 +1,12 @@
 ---
-summary: "CLI reference for `openclaw voicecall` (voice-call plugin command surface)"
+summary: "CLI reference for `openkrab voicecall` (voice-call plugin command surface)"
 read_when:
   - You use the voice-call plugin and want the CLI entry points
   - You want quick examples for `voicecall call|continue|status|tail|expose`
 title: "voicecall"
 ---
 
-# `openclaw voicecall`
+# `openkrab voicecall`
 
 `voicecall` is a plugin-provided command. It only appears if the voice-call plugin is installed and enabled.
 
@@ -17,18 +17,18 @@ Primary doc:
 ## Common commands
 
 ```bash
-openclaw voicecall status --call-id <id>
-openclaw voicecall call --to "+15555550123" --message "Hello" --mode notify
-openclaw voicecall continue --call-id <id> --message "Any questions?"
-openclaw voicecall end --call-id <id>
+openkrab voicecall status --call-id <id>
+openkrab voicecall call --to "+15555550123" --message "Hello" --mode notify
+openkrab voicecall continue --call-id <id> --message "Any questions?"
+openkrab voicecall end --call-id <id>
 ```
 
 ## Exposing webhooks (Tailscale)
 
 ```bash
-openclaw voicecall expose --mode serve
-openclaw voicecall expose --mode funnel
-openclaw voicecall unexpose
+openkrab voicecall expose --mode serve
+openkrab voicecall expose --mode funnel
+openkrab voicecall unexpose
 ```
 
 Security note: only expose the webhook endpoint to networks you trust. Prefer Tailscale Serve over Funnel when possible.

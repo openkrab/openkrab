@@ -7,19 +7,19 @@ title: "Groups"
 
 # Groups
 
-OpenClaw treats group chats consistently across surfaces: WhatsApp, Telegram, Discord, Slack, Signal, iMessage, Microsoft Teams.
+OpenKrab treats group chats consistently across surfaces: WhatsApp, Telegram, Discord, Slack, Signal, iMessage, Microsoft Teams.
 
 ## Beginner intro (2 minutes)
 
-OpenClaw “lives” on your own messaging accounts. There is no separate WhatsApp bot user.
-If **you** are in a group, OpenClaw can see that group and respond there.
+OpenKrab “lives” on your own messaging accounts. There is no separate WhatsApp bot user.
+If **you** are in a group, OpenKrab can see that group and respond there.
 
 Default behavior:
 
 - Groups are restricted (`groupPolicy: "allowlist"`).
 - Replies require a mention unless you explicitly disable mention gating.
 
-Translation: allowlisted senders can trigger OpenClaw by mentioning it.
+Translation: allowlisted senders can trigger OpenKrab by mentioning it.
 
 > TL;DR
 >

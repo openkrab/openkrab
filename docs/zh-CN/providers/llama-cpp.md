@@ -1,14 +1,14 @@
 ---
-summary: "通过 Llama.cpp（本地 OpenAI 兼容器）运行 OpenClaw"
+summary: "通过 Llama.cpp（本地 OpenAI 兼容器）运行 OpenKrab"
 read_when:
-  - 你想通过 Llama.cpp 使用本地模型运行 OpenClaw
+  - 你想通过 Llama.cpp 使用本地模型运行 OpenKrab
   - 你需要 llama.cpp 的安装和配置指导
 title: "Llama.cpp"
 ---
 
 # Llama.cpp
 
-OpenClaw 支持通过 OpenAI 兼容 API (`/v1`) 集成 `llama.cpp`。这让你可以使用 CPU 或者 GPU 高效地运行量化的本地模型，并将其无缝接入 OpenClaw 的生态系统。
+OpenKrab 支持通过 OpenAI 兼容 API (`/v1`) 集成 `llama.cpp`。这让你可以使用 CPU 或者 GPU 高效地运行量化的本地模型，并将其无缝接入 OpenKrab 的生态系统。
 
 ## 快速开始
 

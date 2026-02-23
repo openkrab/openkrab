@@ -29,7 +29,7 @@ openclaw plugins update <id>
 openclaw plugins update --all
 ```
 
-Bundled plugins ship with OpenClaw but start disabled. Use `plugins enable` to
+Bundled plugins ship with OpenKrab but start disabled. Use `plugins enable` to
 activate them.
 
 All plugins must ship a `openclaw.plugin.json` file with an inline JSON Schema
@@ -88,5 +88,5 @@ openclaw plugins update <id> --dry-run
 Updates only apply to plugins installed from npm (tracked in `plugins.installs`).
 
 When a stored integrity hash exists and the fetched artifact hash changes,
-OpenClaw prints a warning and asks for confirmation before proceeding. Use
+OpenKrab prints a warning and asks for confirmation before proceeding. Use
 global `--yes` to bypass prompts in CI/non-interactive runs.

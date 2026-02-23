@@ -34,7 +34,7 @@ openclaw plugins install ./extensions/feishu
 
 ### 方式一：通过安装向导添加（推荐）
 
-如果您刚安装完 OpenClaw，可以直接运行向导，根据提示添加飞书：
+如果您刚安装完 OpenKrab，可以直接运行向导，根据提示添加飞书：
 
 ```bash
 openclaw onboard
@@ -167,7 +167,7 @@ Lark（国际版）请使用 https://open.larksuite.com/app，并在配置中设
 
 ---
 
-## 第二步：配置 OpenClaw
+## 第二步：配置 OpenKrab
 
 ### 通过向导配置（推荐）
 

@@ -23,7 +23,7 @@ openclaw devices list --json
 
 ### `openclaw devices approve [requestId] [--latest]`
 
-Approve a pending device pairing request. If `requestId` is omitted, OpenClaw
+Approve a pending device pairing request. If `requestId` is omitted, OpenKrab
 automatically approves the most recent pending request.
 
 ```

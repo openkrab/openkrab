@@ -1,6 +1,6 @@
 # Deployment Guide
 
-This guide covers all deployment methods for krabkrab.
+This guide covers all deployment methods for krabbot.
 
 ---
 
@@ -24,7 +24,7 @@ This guide covers all deployment methods for krabkrab.
 
 ```bash
 docker run -d \
-  --name krabkrab \
+  --name krabbot \
   -p 4120:4120 \
   -v krab-config:/data/config \
   -v krab-memory:/data/memory \
@@ -37,8 +37,8 @@ docker run -d \
 ```bash
 git clone https://github.com/openkrab/openkrab.git
 cd openkrab
-docker build -t krabkrab:local .
-docker run -d -p 4120:4120 krabkrab:local
+docker build -t krabbot:local .
+docker run -d -p 4120:4120 krabbot:local
 ```
 
 ### Available Tags
@@ -68,10 +68,10 @@ The included `docker-compose.yml` provides a production-ready setup:
 docker compose up -d
 
 # Start with custom env
-OPENAI_API_KEY="sk-..." KRABKRAB_PORT=8080 docker compose up -d
+OPENAI_API_KEY="sk-..." KRABBOT_PORT=8080 docker compose up -d
 
 # View logs
-docker compose logs -f krabkrab
+docker compose logs -f krabbot
 
 # Stop
 docker compose down
@@ -86,8 +86,8 @@ Create a `.env` file in the project root:
 
 ```env
 # Gateway
-KRABKRAB_PORT=4120
-KRABKRAB_GATEWAY_TOKEN=your-secret-token
+KRABBOT_PORT=4120
+KRABBOT_GATEWAY_TOKEN=your-secret-token
 RUST_LOG=info
 
 # AI Providers
@@ -118,42 +118,42 @@ Download the latest release from [GitHub Releases](https://github.com/openkrab/o
 
 | Platform | Architecture | File |
 |----------|-------------|------|
-| Linux | x86_64 (glibc) | `krabkrab-vX.Y.Z-linux-x86_64.tar.gz` |
-| Linux | x86_64 (static) | `krabkrab-vX.Y.Z-linux-x86_64-static.tar.gz` |
-| Linux | ARM64 | `krabkrab-vX.Y.Z-linux-arm64.tar.gz` |
-| Linux | ARMv7 (RPi) | `krabkrab-vX.Y.Z-linux-armv7.tar.gz` |
-| macOS | ARM64 (Apple Silicon) | `krabkrab-vX.Y.Z-macos-arm64.tar.gz` |
-| macOS | x86_64 (Intel) | `krabkrab-vX.Y.Z-macos-x86_64.tar.gz` |
-| Windows | x86_64 | `krabkrab-vX.Y.Z-windows-x86_64.zip` |
-| FreeBSD | x86_64 | `krabkrab-vX.Y.Z-freebsd-x86_64.tar.gz` |
-| OpenBSD | x86_64 (compat) | `krabkrab-vX.Y.Z-openbsd-x86_64-compat.tar.gz` |
+| Linux | x86_64 (glibc) | `krabbot-vX.Y.Z-linux-x86_64.tar.gz` |
+| Linux | x86_64 (static) | `krabbot-vX.Y.Z-linux-x86_64-static.tar.gz` |
+| Linux | ARM64 | `krabbot-vX.Y.Z-linux-arm64.tar.gz` |
+| Linux | ARMv7 (RPi) | `krabbot-vX.Y.Z-linux-armv7.tar.gz` |
+| macOS | ARM64 (Apple Silicon) | `krabbot-vX.Y.Z-macos-arm64.tar.gz` |
+| macOS | x86_64 (Intel) | `krabbot-vX.Y.Z-macos-x86_64.tar.gz` |
+| Windows | x86_64 | `krabbot-vX.Y.Z-windows-x86_64.zip` |
+| FreeBSD | x86_64 | `krabbot-vX.Y.Z-freebsd-x86_64.tar.gz` |
+| OpenBSD | x86_64 (compat) | `krabbot-vX.Y.Z-openbsd-x86_64-compat.tar.gz` |
 
 ### Installation (Linux / macOS)
 
 ```bash
 # Download and extract
 VERSION="2026.2.20"
-curl -LO "https://github.com/openkrab/openkrab/releases/download/v${VERSION}/krabkrab-v${VERSION}-linux-x86_64.tar.gz"
+curl -LO "https://github.com/openkrab/openkrab/releases/download/v${VERSION}/krabbot-v${VERSION}-linux-x86_64.tar.gz"
 
 # Verify checksum
-curl -LO "https://github.com/openkrab/openkrab/releases/download/v${VERSION}/krabkrab-v${VERSION}-linux-x86_64.tar.gz.sha256"
-sha256sum -c "krabkrab-v${VERSION}-linux-x86_64.tar.gz.sha256"
+curl -LO "https://github.com/openkrab/openkrab/releases/download/v${VERSION}/krabbot-v${VERSION}-linux-x86_64.tar.gz.sha256"
+sha256sum -c "krabbot-v${VERSION}-linux-x86_64.tar.gz.sha256"
 
 # Extract and install
-tar xzf "krabkrab-v${VERSION}-linux-x86_64.tar.gz"
-sudo mv krabkrab-cli /usr/local/bin/krabkrab
-chmod +x /usr/local/bin/krabkrab
+tar xzf "krabbot-v${VERSION}-linux-x86_64.tar.gz"
+sudo mv krabbot-cli /usr/local/bin/krabbot
+chmod +x /usr/local/bin/krabbot
 
 # Verify
-krabkrab --version
+krabbot --version
 ```
 
 ### Installation (Windows)
 
-1. Download `krabkrab-vX.Y.Z-windows-x86_64.zip`
-2. Extract to a folder (e.g., `C:\Program Files\krabkrab\`)
+1. Download `krabbot-vX.Y.Z-windows-x86_64.zip`
+2. Extract to a folder (e.g., `C:\Program Files\krabbot\`)
 3. Add the folder to your `PATH` environment variable
-4. Open a new terminal and run `krabkrab --version`
+4. Open a new terminal and run `krabbot --version`
 
 ---
 
@@ -172,8 +172,8 @@ git clone https://github.com/openkrab/openkrab.git
 cd openkrab
 cargo build --workspace --release
 
-# Binary at: target/release/krabkrab-cli
-sudo cp target/release/krabkrab-cli /usr/local/bin/krabkrab
+# Binary at: target/release/krabbot-cli
+sudo cp target/release/krabbot-cli /usr/local/bin/krabbot
 ```
 
 ### Optional Features
@@ -223,17 +223,17 @@ The `Cross.toml` in the repository root configures the Docker images used for ea
 ```bash
 # Download ARMv7 binary
 VERSION="2026.2.20"
-curl -LO "https://github.com/openkrab/openkrab/releases/download/v${VERSION}/krabkrab-v${VERSION}-linux-armv7.tar.gz"
-tar xzf "krabkrab-v${VERSION}-linux-armv7.tar.gz"
-sudo mv krabkrab-cli /usr/local/bin/krabkrab
-chmod +x /usr/local/bin/krabkrab
+curl -LO "https://github.com/openkrab/openkrab/releases/download/v${VERSION}/krabbot-v${VERSION}-linux-armv7.tar.gz"
+tar xzf "krabbot-v${VERSION}-linux-armv7.tar.gz"
+sudo mv krabbot-cli /usr/local/bin/krabbot
+chmod +x /usr/local/bin/krabbot
 ```
 
 ### Method 2: Docker (RPi 3/4/5 — ARM64)
 
 ```bash
 docker run -d \
-  --name krabkrab \
+  --name krabbot \
   -p 4120:4120 \
   -v krab-data:/data \
   ghcr.io/openkrab/openkrab:latest
@@ -246,7 +246,7 @@ docker run -d \
 cross build --workspace --release --target armv7-unknown-linux-gnueabihf
 
 # Copy to Pi
-scp target/armv7-unknown-linux-gnueabihf/release/krabkrab-cli pi@raspberrypi:~/krabkrab
+scp target/armv7-unknown-linux-gnueabihf/release/krabbot-cli pi@raspberrypi:~/krabbot
 ```
 
 ---
@@ -258,10 +258,10 @@ scp target/armv7-unknown-linux-gnueabihf/release/krabkrab-cli pi@raspberrypi:~/k
 ```bash
 # Download pre-built binary
 VERSION="2026.2.20"
-fetch "https://github.com/openkrab/openkrab/releases/download/v${VERSION}/krabkrab-v${VERSION}-freebsd-x86_64.tar.gz"
-tar xzf "krabkrab-v${VERSION}-freebsd-x86_64.tar.gz"
-cp krabkrab-cli /usr/local/bin/krabkrab
-chmod +x /usr/local/bin/krabkrab
+fetch "https://github.com/openkrab/openkrab/releases/download/v${VERSION}/krabbot-v${VERSION}-freebsd-x86_64.tar.gz"
+tar xzf "krabbot-v${VERSION}-freebsd-x86_64.tar.gz"
+cp krabbot-cli /usr/local/bin/krabbot
+chmod +x /usr/local/bin/krabbot
 ```
 
 ### OpenBSD
@@ -275,10 +275,10 @@ doas sysctl kern.emul.linux=1
 
 # Download the static binary
 VERSION="2026.2.20"
-ftp "https://github.com/openkrab/openkrab/releases/download/v${VERSION}/krabkrab-v${VERSION}-openbsd-x86_64-compat.tar.gz"
-tar xzf "krabkrab-v${VERSION}-openbsd-x86_64-compat.tar.gz"
-cp krabkrab-cli /usr/local/bin/krabkrab
-chmod +x /usr/local/bin/krabkrab
+ftp "https://github.com/openkrab/openkrab/releases/download/v${VERSION}/krabbot-v${VERSION}-openbsd-x86_64-compat.tar.gz"
+tar xzf "krabbot-v${VERSION}-openbsd-x86_64-compat.tar.gz"
+cp krabbot-cli /usr/local/bin/krabbot
+chmod +x /usr/local/bin/krabbot
 ```
 
 ---
@@ -288,9 +288,9 @@ chmod +x /usr/local/bin/krabkrab
 For Linux servers, create a systemd unit file:
 
 ```bash
-sudo tee /etc/systemd/system/krabkrab.service << 'EOF'
+sudo tee /etc/systemd/system/krabbot.service << 'EOF'
 [Unit]
-Description=krabkrab Personal AI Assistant Gateway
+Description=krabbot Personal AI Assistant Gateway
 After=network-online.target
 Wants=network-online.target
 
@@ -298,7 +298,7 @@ Wants=network-online.target
 Type=simple
 User=krab
 Group=krab
-ExecStart=/usr/local/bin/krabkrab gateway start
+ExecStart=/usr/local/bin/krabbot gateway start
 Restart=on-failure
 RestartSec=5
 TimeoutStartSec=30
@@ -307,14 +307,14 @@ TimeoutStartSec=30
 NoNewPrivileges=true
 ProtectSystem=strict
 ProtectHome=read-only
-ReadWritePaths=/var/lib/krabkrab /var/log/krabkrab
+ReadWritePaths=/var/lib/krabbot /var/log/krabbot
 PrivateTmp=true
 
 # Environment
 Environment=RUST_LOG=info
-Environment=KRABKRAB_DATA_DIR=/var/lib/krabkrab
-Environment=KRABKRAB_LOG_DIR=/var/log/krabkrab
-EnvironmentFile=-/etc/krabkrab/env
+Environment=KRABBOT_DATA_DIR=/var/lib/krabbot
+Environment=KRABBOT_LOG_DIR=/var/log/krabbot
+EnvironmentFile=-/etc/krabbot/env
 
 [Install]
 WantedBy=multi-user.target
@@ -324,24 +324,24 @@ EOF
 ```bash
 # Create user and directories
 sudo useradd -r -s /usr/sbin/nologin krab
-sudo mkdir -p /var/lib/krabkrab /var/log/krabkrab /etc/krabkrab
-sudo chown krab:krab /var/lib/krabkrab /var/log/krabkrab
+sudo mkdir -p /var/lib/krabbot /var/log/krabbot /etc/krabbot
+sudo chown krab:krab /var/lib/krabbot /var/log/krabbot
 
-# Put API keys in /etc/krabkrab/env
-sudo tee /etc/krabkrab/env << 'EOF'
+# Put API keys in /etc/krabbot/env
+sudo tee /etc/krabbot/env << 'EOF'
 OPENAI_API_KEY=sk-...
-KRABKRAB_GATEWAY_TOKEN=your-secret-token
+KRABBOT_GATEWAY_TOKEN=your-secret-token
 EOF
-sudo chmod 600 /etc/krabkrab/env
+sudo chmod 600 /etc/krabbot/env
 
 # Enable and start
 sudo systemctl daemon-reload
-sudo systemctl enable krabkrab
-sudo systemctl start krabkrab
+sudo systemctl enable krabbot
+sudo systemctl start krabbot
 
 # Check status
-sudo systemctl status krabkrab
-journalctl -u krabkrab -f
+sudo systemctl status krabbot
+journalctl -u krabbot -f
 ```
 
 ---
@@ -350,12 +350,12 @@ journalctl -u krabkrab -f
 
 | Variable | Default | Description |
 |----------|---------|-------------|
-| `KRABKRAB_DATA_DIR` | `~/.openkrab` | Data storage root |
-| `KRABKRAB_CONFIG_DIR` | `$DATA_DIR/config` | Configuration files |
-| `KRABKRAB_LOG_DIR` | `$DATA_DIR/logs` | Log files |
-| `KRABKRAB_GATEWAY_HOST` | `127.0.0.1` | Gateway bind address |
-| `KRABKRAB_GATEWAY_PORT` | `4120` | Gateway port |
-| `KRABKRAB_GATEWAY_TOKEN` | _(none)_ | Auth token for gateway |
+| `KRABBOT_DATA_DIR` | `~/.openkrab` | Data storage root |
+| `KRABBOT_CONFIG_DIR` | `$DATA_DIR/config` | Configuration files |
+| `KRABBOT_LOG_DIR` | `$DATA_DIR/logs` | Log files |
+| `KRABBOT_GATEWAY_HOST` | `127.0.0.1` | Gateway bind address |
+| `KRABBOT_GATEWAY_PORT` | `4120` | Gateway port |
+| `KRABBOT_GATEWAY_TOKEN` | _(none)_ | Auth token for gateway |
 | `RUST_LOG` | `info` | Log level (`trace`/`debug`/`info`/`warn`/`error`) |
 | `OPENAI_API_KEY` | _(none)_ | OpenAI API key |
 | `ANTHROPIC_API_KEY` | _(none)_ | Anthropic API key |

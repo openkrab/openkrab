@@ -1,5 +1,5 @@
 ---
-summary: "OpenClaw plugins/extensions: discovery, config, and safety"
+summary: "OpenKrab plugins/extensions: discovery, config, and safety"
 read_when:
   - Adding or modifying plugins/extensions
   - Documenting plugin install or load rules
@@ -10,11 +10,11 @@ title: "Plugins"
 
 ## Quick start (new to plugins?)
 
-A plugin is just a **small code module** that extends OpenClaw with extra
+A plugin is just a **small code module** that extends OpenKrab with extra
 features (commands, tools, and Gateway RPC).
 
 Most of the time, you’ll use plugins when you want a feature that’s not built
-into core OpenClaw yet (or you want to keep optional features out of your main
+into core OpenKrab yet (or you want to keep optional features out of your main
 install).
 
 Fast path:
@@ -55,7 +55,7 @@ Looking for third-party listings? See [Community plugins](/plugins/community).
 - Qwen OAuth (provider auth) — bundled as `qwen-portal-auth` (disabled by default)
 - Copilot Proxy (provider auth) — local VS Code Copilot Proxy bridge; distinct from built-in `github-copilot` device login (bundled, disabled by default)
 
-OpenClaw plugins are **TypeScript modules** loaded at runtime via jiti. **Config
+OpenKrab plugins are **TypeScript modules** loaded at runtime via jiti. **Config
 validation does not execute plugin code**; it uses the plugin manifest and JSON
 Schema instead. See [Plugin manifest](/plugins/manifest).
 
@@ -79,7 +79,7 @@ Plugins can access selected core helpers via `api.runtime`. For telephony TTS:
 
 ```ts
 const result = await api.runtime.tts.textToSpeechTelephony({
-  text: "Hello from OpenClaw",
+  text: "Hello from OpenKrab",
   cfg: api.config,
 });
 ```
@@ -92,7 +92,7 @@ Notes:
 
 ## Discovery & precedence
 
-OpenClaw scans, in order:
+OpenKrab scans, in order:
 
 1. Config paths
 
@@ -108,7 +108,7 @@ OpenClaw scans, in order:
 - `~/.openclaw/extensions/*.ts`
 - `~/.openclaw/extensions/*/index.ts`
 
-4. Bundled extensions (shipped with OpenClaw, **disabled by default**)
+4. Bundled extensions (shipped with OpenKrab, **disabled by default**)
 
 - `<openclaw>/extensions/*`
 
@@ -118,8 +118,8 @@ but can be disabled the same way.
 
 Hardening notes:
 
-- If `plugins.allow` is empty and non-bundled plugins are discoverable, OpenClaw logs a startup warning with plugin ids and sources.
-- Candidate paths are safety-checked before discovery admission. OpenClaw blocks candidates when:
+- If `plugins.allow` is empty and non-bundled plugins are discoverable, OpenKrab logs a startup warning with plugin ids and sources.
+- Candidate paths are safety-checked before discovery admission. OpenKrab blocks candidates when:
   - extension entry resolves outside plugin root (including symlink/path traversal escapes),
   - plugin root/source path is world-writable,
   - path ownership is suspicious for non-bundled plugins (POSIX owner is neither current uid nor root).
@@ -190,7 +190,7 @@ Example:
 }
 ```
 
-OpenClaw can also merge **external channel catalogs** (for example, an MPM
+OpenKrab can also merge **external channel catalogs** (for example, an MPM
 registry export). Drop a JSON file at one of:
 
 - `~/.openclaw/mpm/plugins.json`
@@ -208,7 +208,7 @@ Default plugin ids:
 - Package packs: `package.json` `name`
 - Standalone file: file base name (`~/.../voice-call.ts` → `voice-call`)
 
-If a plugin exports `id`, OpenClaw uses it but warns when it doesn’t match the
+If a plugin exports `id`, OpenKrab uses it but warns when it doesn’t match the
 configured id.
 
 ## Config
@@ -268,7 +268,7 @@ are disabled with diagnostics.
 
 The Control UI uses `config.schema` (JSON Schema + `uiHints`) to render better forms.
 
-OpenClaw augments `uiHints` at runtime based on discovered plugins:
+OpenKrab augments `uiHints` at runtime based on discovered plugins:
 
 - Adds per-plugin labels for `plugins.entries.<id>` / `.enabled` / `.config`
 - Merges optional plugin-provided config field hints under:
@@ -317,7 +317,7 @@ openclaw plugins doctor
 ```
 
 `plugins update` only works for npm installs tracked under `plugins.installs`.
-If stored integrity metadata changes between updates, OpenClaw warns and asks for confirmation (use global `--yes` to bypass prompts).
+If stored integrity metadata changes between updates, OpenKrab warns and asks for confirmation (use global `--yes` to bypass prompts).
 
 Plugins may also register their own top‑level commands (example: `openclaw voicecall`).
 
@@ -353,7 +353,7 @@ Notes:
 ## Provider plugins (model auth)
 
 Plugins can register **model provider auth** flows so users can run OAuth or
-API-key setup inside OpenClaw (no external scripts needed).
+API-key setup inside OpenKrab (no external scripts needed).
 
 Register a provider via `api.registerProvider(...)`. Each provider exposes one
 or more auth methods (OAuth, API key, device code, etc.). These methods power:
@@ -584,7 +584,7 @@ Command handler context:
 - `isAuthorizedSender`: Whether the sender is an authorized user
 - `args`: Arguments passed after the command (if `acceptsArgs: true`)
 - `commandBody`: The full command text
-- `config`: The current OpenClaw config
+- `config`: The current OpenKrab config
 
 Command options:
 

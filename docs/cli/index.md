@@ -1,5 +1,5 @@
 ---
-summary: "OpenKrab CLI reference for `krabkrab` commands, subcommands, and options"
+summary: "OpenKrab CLI reference for `krabbot` commands, subcommands, and options"
 read_when:
   - Adding or modifying CLI commands or options
   - Documenting new command surfaces
@@ -66,7 +66,7 @@ OpenKrab uses a lobster palette for CLI output.
 ## Command tree
 
 ```
-krabkrab [--config <path>] [--data-dir <path>] <command>
+krabbot [--config <path>] [--data-dir <path>] <command>
   setup                    # Initialize config and workspace
   config
     get <key>              # Get config value
@@ -143,17 +143,17 @@ krabkrab [--config <path>] [--data-dir <path>] <command>
 
 ## Security
 
-- `krabkrab security audit` — audit config + local state for common security issues
-- `krabkrab security audit --fix` — tighten safe defaults
+- `krabbot security audit` — audit config + local state for common security issues
+- `krabbot security audit --fix` — tighten safe defaults
 
 ## Memory
 
 Vector search over memory files:
 
-- `krabkrab memory status` — show index stats
-- `krabkrab memory sync --path <dir>` — sync memory from directory
-- `krabkrab memory search "<query>"` — semantic search over memory
-- `krabkrab memory index` — reindex memory files
+- `krabbot memory status` — show index stats
+- `krabbot memory sync --path <dir>` — sync memory from directory
+- `krabbot memory search "<query>"` — semantic search over memory
+- `krabbot memory index` — reindex memory files
 
 ## Setup + configuration
 
@@ -176,9 +176,9 @@ Subcommands:
 
 Examples:
 ```bash
-krabkrab config get providers.openai.api_key
-krabkrab config set providers.openai.model "gpt-4o"
-krabkrab config unset providers.openai.api_key
+krabbot config get providers.openai.api_key
+krabbot config set providers.openai.model "gpt-4o"
+krabbot config unset providers.openai.api_key
 ```
 
 ### `doctor`
@@ -204,9 +204,9 @@ Subcommands:
 
 Examples:
 ```bash
-krabkrab channels add telegram --token $TELEGRAM_BOT_TOKEN
-krabkrab channels add discord --token $DISCORD_BOT_TOKEN
-krabkrab channels status
+krabbot channels add telegram --token $TELEGRAM_BOT_TOKEN
+krabbot channels add discord --token $DISCORD_BOT_TOKEN
+krabbot channels status
 ```
 
 ### `skills`
@@ -234,9 +234,9 @@ Unified outbound messaging.
 
 Examples:
 ```bash
-krabkrab message send --to @username --text "Hello"
-krabkrab telegram --to @username --text "Hello from OpenKrab!"
-krabkrab discord --to 123456789 --text "Hello!"
+krabbot message send --to @username --text "Hello"
+krabbot telegram --to @username --text "Hello from OpenKrab!"
+krabbot discord --to 123456789 --text "Hello!"
 ```
 
 ### `agent` / `ask`
@@ -253,8 +253,8 @@ Options:
 
 Examples:
 ```bash
-krabkrab ask "What's on my calendar today?"
-krabkrab agent --message "Hello" --channel telegram
+krabbot ask "What's on my calendar today?"
+krabbot agent --message "Hello" --channel telegram
 ```
 
 ### `agents`
@@ -354,9 +354,9 @@ Tail Gateway logs.
 
 Examples:
 ```bash
-krabkrab logs --follow
-krabkrab logs --limit 200
-krabkrab logs --json
+krabbot logs --follow
+krabbot logs --limit 200
+krabbot logs --json
 ```
 
 ## Models
@@ -398,21 +398,21 @@ Subcommands:
 
 Examples:
 ```bash
-krabkrab voice wake
-krabkrab voice speak "Hello World"
-krabkrab voice mic_start
+krabbot voice wake
+krabbot voice speak "Hello World"
+krabbot voice mic_start
 ```
 
 ## Plugins
 
 Manage WASM plugins:
 
-- `krabkrab plugin list` — list loaded plugins
-- `krabkrab plugin load <path>` — load a plugin
-- `krabkrab plugin unload <name>` — unload a plugin
+- `krabbot plugin list` — list loaded plugins
+- `krabbot plugin load <path>` — load a plugin
+- `krabbot plugin unload <name>` — unload a plugin
 
 ## Environment variables
 
-- `KRABKRAB_CONFIG_DIR`: config directory (default: `~/.config/krabkrab/`)
-- `KRABKRAB_DATA_DIR`: data directory
+- `KRABBOT_CONFIG_DIR`: config directory (default: `~/.config/krabbot/`)
+- `KRABBOT_DATA_DIR`: data directory
 - `RUST_LOG`: logging level (e.g., `info`, `debug`)

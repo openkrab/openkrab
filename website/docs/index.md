@@ -135,16 +135,16 @@ The Gateway is the single source of truth for sessions, routing, and channel con
   <Step title="Configure and start the Gateway">
     ```bash
     # Set your AI provider
-    krabkrab config set providers.openai.api_key "sk-..."
+    krabbot config set providers.openai.api_key "sk-..."
 
     # Start the gateway
-    krabkrab gateway --port 18789
+    krabbot gateway --port 18789
     ```
   </Step>
   <Step title="Send messages">
     ```bash
-    krabkrab telegram --to @username --text "Hello from OpenKrab!"
-    krabkrab ask "What's on my calendar today?"
+    krabbot telegram --to @username --text "Hello from OpenKrab!"
+    krabbot ask "What's on my calendar today?"
     ```
   </Step>
 </Steps>
@@ -160,7 +160,7 @@ Open the browser dashboard after the Gateway starts.
 
 ## Configuration
 
-Config lives at `~/.config/krabkrab/config.toml`.
+Config lives at `~/.config/krabbot/config.toml`.
 
 - If you **do nothing**, OpenKrab uses default settings with OpenAI provider.
 - If you want to lock it down, start with `channels.telegram.allow_from` and rate limiting.

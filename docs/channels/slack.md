@@ -34,7 +34,7 @@ Status: production-ready for DMs + channels via Slack app integrations. Default 
         - install app and copy **Bot Token** (`xoxb-...`)
       </Step>
 
-      <Step title="Configure OpenClaw">
+      <Step title="Configure OpenKrab">
 
 ```json5
 {
@@ -92,7 +92,7 @@ openclaw gateway
 
       </Step>
 
-      <Step title="Configure OpenClaw HTTP mode">
+      <Step title="Configure OpenKrab HTTP mode">
 
 ```json5
 {
@@ -299,7 +299,7 @@ Available action groups in current Slack tooling:
 
 ## Ack reactions
 
-`ackReaction` sends an acknowledgement emoji while OpenClaw is processing an inbound message.
+`ackReaction` sends an acknowledgement emoji while OpenKrab is processing an inbound message.
 
 Resolution order:
 
@@ -321,12 +321,12 @@ Notes:
 ```json
 {
   "display_information": {
-    "name": "OpenClaw",
-    "description": "Slack connector for OpenClaw"
+    "name": "OpenKrab",
+    "description": "Slack connector for OpenKrab"
   },
   "features": {
     "bot_user": {
-      "display_name": "OpenClaw",
+      "display_name": "OpenKrab",
       "always_online": false
     },
     "app_home": {
@@ -336,7 +336,7 @@ Notes:
     "slash_commands": [
       {
         "command": "/openclaw",
-        "description": "Send a message to OpenClaw",
+        "description": "Send a message to OpenKrab",
         "should_escape": false
       }
     ]
@@ -463,7 +463,7 @@ openclaw pairing list slack
 
 ## Text streaming
 
-OpenClaw supports Slack native text streaming via the Agents and AI Apps API.
+OpenKrab supports Slack native text streaming via the Agents and AI Apps API.
 
 By default, streaming is enabled. Disable it per account:
 
@@ -485,7 +485,7 @@ channels:
 - Later text chunks append to the same stream (`chat.appendStream`).
 - End of reply finalizes stream (`chat.stopStream`).
 - Media and non-text payloads fall back to normal delivery.
-- If streaming fails mid-reply, OpenClaw falls back to normal delivery for remaining payloads.
+- If streaming fails mid-reply, OpenKrab falls back to normal delivery for remaining payloads.
 
 ## Configuration reference pointers
 

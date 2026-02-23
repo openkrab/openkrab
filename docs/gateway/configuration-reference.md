@@ -7,7 +7,7 @@ description: "Complete field-by-field reference for ~/.openclaw/openclaw.json"
 
 Every field available in `~/.openclaw/openclaw.json`. For a task-oriented overview, see [Configuration](/gateway/configuration).
 
-Config format is **JSON5** (comments + trailing commas allowed). All fields are optional — OpenClaw uses safe defaults when omitted.
+Config format is **JSON5** (comments + trailing commas allowed). All fields are optional — OpenKrab uses safe defaults when omitted.
 
 ---
 
@@ -380,7 +380,7 @@ Chat modes: `oncall` (respond on @-mention, default), `onmessage` (every message
 
 ### iMessage
 
-OpenClaw spawns `imsg rpc` (JSON-RPC over stdio). No daemon or port required.
+OpenKrab spawns `imsg rpc` (JSON-RPC over stdio). No daemon or port required.
 
 ```json5
 {
@@ -563,7 +563,7 @@ Default: `~/.openclaw/workspace`.
 
 ### `agents.defaults.repoRoot`
 
-Optional repository root shown in the system prompt's Runtime line. If unset, OpenClaw auto-detects by walking upward from the workspace.
+Optional repository root shown in the system prompt's Runtime line. If unset, OpenKrab auto-detects by walking upward from the workspace.
 
 ```json5
 {
@@ -665,7 +665,7 @@ Time format in system prompt. Default: `auto` (OS preference).
 }
 ```
 
-- `model.primary`: format `provider/model` (e.g. `anthropic/claude-opus-4-6`). If you omit the provider, OpenClaw assumes `anthropic` (deprecated).
+- `model.primary`: format `provider/model` (e.g. `anthropic/claude-opus-4-6`). If you omit the provider, OpenKrab assumes `anthropic` (deprecated).
 - `models`: the configured model catalog and allowlist for `/model`. Each entry can include `alias` (shortcut) and `params` (provider-specific: `temperature`, `maxTokens`).
 - `imageModel`: only used if the primary model lacks image input.
 - `maxConcurrent`: max parallel agent runs across sessions (each session still serialized). Default: 1.
@@ -1610,7 +1610,7 @@ Notes:
 
 ## Custom providers and base URLs
 
-OpenClaw uses the pi-coding-agent model catalog. Add custom providers via `models.providers` in config or `~/.openclaw/agents/<agentId>/agent/models.json`.
+OpenKrab uses the pi-coding-agent model catalog. Add custom providers via `models.providers` in config or `~/.openclaw/agents/<agentId>/agent/models.json`.
 
 ```json5
 {
@@ -1959,7 +1959,7 @@ See [Plugins](/tools/plugin).
   ui: {
     seamColor: "#FF4500",
     assistant: {
-      name: "OpenClaw",
+      name: "OpenKrab",
       avatar: "CB", // emoji, short text, image URL, or data URI
     },
   },

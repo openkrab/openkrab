@@ -1,11 +1,11 @@
 ---
-summary: "CLI reference for `openclaw agents` (list/add/delete/set identity)"
+summary: "CLI reference for `openkrab agents` (list/add/delete/set identity)"
 read_when:
   - You want multiple isolated agents (workspaces + routing + auth)
 title: "agents"
 ---
 
-# `openclaw agents`
+# `openkrab agents`
 
 Manage isolated agents (workspaces + auth + routing).
 
@@ -17,18 +17,18 @@ Related:
 ## Examples
 
 ```bash
-openclaw agents list
-openclaw agents add work --workspace ~/.openclaw/workspace-work
-openclaw agents set-identity --workspace ~/.openclaw/workspace --from-identity
-openclaw agents set-identity --agent main --avatar avatars/openclaw.png
-openclaw agents delete work
+openkrab agents list
+openkrab agents add work --workspace ~/.openkrab/workspace-work
+openkrab agents set-identity --workspace ~/.openkrab/workspace --from-identity
+openkrab agents set-identity --agent main --avatar avatars/openkrab.png
+openkrab agents delete work
 ```
 
 ## Identity files
 
 Each agent workspace can include an `IDENTITY.md` at the workspace root:
 
-- Example path: `~/.openclaw/workspace/IDENTITY.md`
+- Example path: `~/.openkrab/workspace/IDENTITY.md`
 - `set-identity --from-identity` reads from the workspace root (or an explicit `--identity-file`)
 
 Avatar paths resolve relative to the workspace root.
@@ -45,13 +45,13 @@ Avatar paths resolve relative to the workspace root.
 Load from `IDENTITY.md`:
 
 ```bash
-openclaw agents set-identity --workspace ~/.openclaw/workspace --from-identity
+openkrab agents set-identity --workspace ~/.openkrab/workspace --from-identity
 ```
 
 Override fields explicitly:
 
 ```bash
-openclaw agents set-identity --agent main --name "OpenClaw" --emoji "🦞" --avatar avatars/openclaw.png
+openkrab agents set-identity --agent main --name "openkrab" --emoji "🦞" --avatar avatars/openkrab.png
 ```
 
 Config sample:
@@ -63,10 +63,10 @@ Config sample:
       {
         id: "main",
         identity: {
-          name: "OpenClaw",
+          name: "openkrab",
           theme: "space lobster",
           emoji: "🦞",
-          avatar: "avatars/openclaw.png",
+          avatar: "avatars/openkrab.png",
         },
       },
     ],

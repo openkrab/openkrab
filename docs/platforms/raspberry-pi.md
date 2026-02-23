@@ -1,17 +1,17 @@
 ---
-summary: "OpenClaw on Raspberry Pi (budget self-hosted setup)"
+summary: "OpenKrab on Raspberry Pi (budget self-hosted setup)"
 read_when:
-  - Setting up OpenClaw on a Raspberry Pi
-  - Running OpenClaw on ARM devices
+  - Setting up OpenKrab on a Raspberry Pi
+  - Running OpenKrab on ARM devices
   - Building a cheap always-on personal AI
 title: "Raspberry Pi"
 ---
 
-# OpenClaw on Raspberry Pi
+# OpenKrab on Raspberry Pi
 
 ## Goal
 
-Run a persistent, always-on OpenClaw Gateway on a Raspberry Pi for **~$35-80** one-time cost (no monthly fees).
+Run a persistent, always-on OpenKrab Gateway on a Raspberry Pi for **~$35-80** one-time cost (no monthly fees).
 
 Perfect for:
 
@@ -107,7 +107,7 @@ echo 'vm.swappiness=10' | sudo tee -a /etc/sysctl.conf
 sudo sysctl -p
 ```
 
-## 6) Install OpenClaw
+## 6) Install OpenKrab
 
 ### Option A: Standard Install (Recommended)
 
@@ -221,7 +221,7 @@ htop
 
 ### Binary Compatibility
 
-Most OpenClaw features work on ARM64, but some external binaries may need ARM builds:
+Most OpenKrab features work on ARM64, but some external binaries may need ARM builds:
 
 | Tool               | ARM64 Status | Notes                               |
 | ------------------ | ------------ | ----------------------------------- |

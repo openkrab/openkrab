@@ -37,7 +37,7 @@ Building from source is the recommended way to install OpenKrab. It provides the
     cargo build --release
     ```
 
-    The binary will be at `target/release/krabkrab`.
+    The binary will be at `target/release/krabbot`.
 
     To install globally:
     ```bash
@@ -46,7 +46,7 @@ Building from source is the recommended way to install OpenKrab. It provides the
 
     Or copy the binary to your PATH:
     ```bash
-    cp target/release/krabkrab /usr/local/bin/
+    cp target/release/krabbot /usr/local/bin/
     ```
 
   </Accordion>
@@ -105,34 +105,34 @@ cargo doc --open             # Generate docs
 Verify everything is working:
 
 ```bash
-krabkrab doctor         # check for config issues
-krabkrab status         # gateway status
-krabkrab dashboard      # open the browser UI
+krabbot doctor         # check for config issues
+krabbot status         # gateway status
+krabbot dashboard      # open the browser UI
 ```
 
 If you need custom runtime paths, use:
 
-- `KRABKRAB_CONFIG_DIR` for config directory
-- `KRABKRAB_DATA_DIR` for data directory
+- `KRABBOT_CONFIG_DIR` for config directory
+- `KRABBOT_DATA_DIR` for data directory
 
 See [Environment vars](/help/environment) for precedence and full details.
 
-## Troubleshooting: `krabkrab` not found
+## Troubleshooting: `krabbot` not found
 
 <Accordion title="PATH diagnosis and fix">
   Quick diagnosis:
 
 ```bash
-which krabkrab
+which krabbot
 echo "$PATH"
 ```
 
-If the directory containing `krabkrab` is **not** in your `$PATH`, your shell can't find the binary.
+If the directory containing `krabbot` is **not** in your `$PATH`, your shell can't find the binary.
 
 Fix — add it to your shell startup file (`~/.zshrc` or `~/.bashrc`):
 
 ```bash
-export PATH="/path/to/krabkrab:$PATH"
+export PATH="/path/to/krabbot:$PATH"
 ```
 
 Then open a new terminal (or `source ~/.zshrc` / `source ~/.bashrc`).

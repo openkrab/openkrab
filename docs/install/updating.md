@@ -1,14 +1,14 @@
 ---
-summary: "Updating OpenClaw safely (global install or source), plus rollback strategy"
+summary: "Updating OpenKrab safely (global install or source), plus rollback strategy"
 read_when:
-  - Updating OpenClaw
+  - Updating OpenKrab
   - Something breaks after an update
 title: "Updating"
 ---
 
 # Updating
 
-OpenClaw is moving fast (pre “1.0”). Treat updates like shipping infra: update → run checks → restart (or use `openclaw update`, which restarts) → verify.
+OpenKrab is moving fast (pre “1.0”). Treat updates like shipping infra: update → run checks → restart (or use `openclaw update`, which restarts) → verify.
 
 ## Recommended: re-run the website installer (upgrade in place)
 
@@ -32,7 +32,7 @@ Notes:
   The installer will `git pull --rebase` **only** if the repo is clean.
 
 - For **global installs**, the script uses `npm install -g openclaw@latest` under the hood.
-- Legacy note: `clawdbot` remains available as a compatibility shim.
+- Legacy note: `krabbot` remains available as a compatibility shim.
 
 ## Before you update
 
@@ -151,7 +151,7 @@ Typical things it does:
 - Migrate deprecated config keys / legacy config file locations.
 - Audit DM policies and warn on risky “open” settings.
 - Check Gateway health and can offer to restart.
-- Detect and migrate older gateway services (launchd/systemd; legacy schtasks) to current OpenClaw services.
+- Detect and migrate older gateway services (launchd/systemd; legacy schtasks) to current OpenKrab services.
 - On Linux, ensure systemd user lingering (so the Gateway survives logout).
 
 Details: [Doctor](/gateway/doctor)

@@ -3,7 +3,7 @@ read_when:
   - 从 CLI 运行 Gateway 网关（开发或服务器）
   - 调试 Gateway 网关认证、绑定模式和连接性
   - 通过 Bonjour 发现 Gateway 网关（局域网 + tailnet）
-summary: OpenClaw Gateway 网关 CLI（`openclaw gateway`）— 运行、查询和发现 Gateway 网关
+summary: OpenKrab Gateway 网关 CLI（`openclaw gateway`）— 运行、查询和发现 Gateway 网关
 title: gateway
 x-i18n:
   generated_at: "2026-02-03T07:45:15Z"
@@ -16,7 +16,7 @@ x-i18n:
 
 # Gateway 网关 CLI
 
-Gateway 网关是 OpenClaw 的 WebSocket 服务器（渠道、节点、会话、hooks）。
+Gateway 网关是 OpenKrab 的 WebSocket 服务器（渠道、节点、会话、hooks）。
 
 本页中的子命令位于 `openclaw gateway …` 下。
 

@@ -1,7 +1,7 @@
 ---
 read_when:
   - 设置 macOS 开发环境
-summary: 为在 OpenClaw macOS 应用上工作的开发者提供的设置指南
+summary: 为在 OpenKrab macOS 应用上工作的开发者提供的设置指南
 title: macOS 开发设置
 x-i18n:
   generated_at: "2026-02-03T07:52:36Z"
@@ -14,7 +14,7 @@ x-i18n:
 
 # macOS 开发者设置
 
-本指南涵盖从源代码构建和运行 OpenClaw macOS 应用程序的必要步骤。
+本指南涵盖从源代码构建和运行 OpenKrab macOS 应用程序的必要步骤。
 
 ## 前置条件
 
@@ -33,7 +33,7 @@ pnpm install
 
 ## 2. 构建和打包应用
 
-要构建 macOS 应用并将其打包到 `dist/OpenClaw.app`，运行：
+要构建 macOS 应用并将其打包到 `dist/OpenKrab.app`，运行：
 
 ```bash
 ./scripts/package-mac-app.sh
@@ -52,7 +52,7 @@ macOS 应用期望全局安装 `openclaw` CLI 来管理后台任务。
 
 **安装方法（推荐）：**
 
-1.  打开 OpenClaw 应用。
+1.  打开 OpenKrab 应用。
 2.  转到 **General** 设置标签页。
 3.  点击 **"Install CLI"**。
 

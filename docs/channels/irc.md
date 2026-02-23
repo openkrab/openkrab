@@ -1,9 +1,9 @@
 ---
 title: IRC
-description: Connect OpenClaw to IRC channels and direct messages.
+description: Connect OpenKrab to IRC channels and direct messages.
 ---
 
-Use IRC when you want OpenClaw in classic channels (`#room`) and direct messages.
+Use IRC when you want OpenKrab in classic channels (`#room`) and direct messages.
 IRC ships as an extension plugin, but it is configured in the main config under `channels.irc`.
 
 ## Quick start
@@ -83,7 +83,7 @@ Example (allow anyone in `#tuirc-dev` to talk to the bot):
 
 ## Reply triggering (mentions)
 
-Even if a channel is allowed (via `groupPolicy` + `groups`) and the sender is allowed, OpenClaw defaults to **mention-gating** in group contexts.
+Even if a channel is allowed (via `groupPolicy` + `groups`) and the sender is allowed, OpenKrab defaults to **mention-gating** in group contexts.
 
 That means you may see logs like `drop channel … (missing-mention)` unless the message includes a mention pattern that matches the bot.
 
